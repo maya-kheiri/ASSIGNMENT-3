@@ -4,9 +4,9 @@ import 'package:todo_list/todo_app/widgets/task_widget.dart';
 
 class AllTasksScreen extends StatelessWidget {
   Function fun;
-  Function delete;
+  Function deleteTaskCompleteness;
 
-  AllTasksScreen(this.fun, this.delete);
+  AllTasksScreen(this.fun, this.deleteTaskCompleteness);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class AllTasksScreen extends StatelessWidget {
     return ListView.builder(
         itemCount: tasksList.length,
         itemBuilder: (context, index) {
-          return TaskWidget(tasksList[index], fun, delete);
+          return TaskWidget(tasksList[index], fun, deleteTaskCompleteness);
         });
   }
 }

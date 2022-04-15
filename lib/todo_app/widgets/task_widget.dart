@@ -4,9 +4,9 @@ import 'package:todo_list/todo_app/models/task_model.dart';
 
 class TaskWidget extends StatelessWidget {
   Function fun;
-  Function delete;
+  Function deleteTaskCompleteness;
   Task task;
-  TaskWidget(this.task, this.fun, this.delete);
+  TaskWidget(this.task, this.fun, this.deleteTaskCompleteness);
   @override  Widget build(BuildContext context) {
     // TODO: implement build
     return Container(
@@ -28,7 +28,7 @@ class TaskWidget extends StatelessWidget {
             icon: const Icon(Icons.delete),
             onPressed: () {
               fun(task);
-              delete(task);
+              deleteTaskCompleteness(task);
             },
           ),
         ));
