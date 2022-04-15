@@ -19,11 +19,9 @@ class _TodoHomePageState extends State<TodoHomePage> {
     tasksList[index].isCompleted = !tasksList[index].isCompleted;
     setState(() {});
   }
-
-  onDeleteItemPressed(Task task) {
+  delete(Task task) {
     int index = tasksList.indexOf(task);
-    tasksList[index].remove = tasksList[index].remove;
-
+    tasksList.removeAt(index);
     setState(() {});
   }
 
@@ -52,9 +50,9 @@ class _TodoHomePageState extends State<TodoHomePage> {
           ),
           body: TabBarView(
             children: [
-              AllTasksScreen(changeTaskCompleteness, onDeleteItemPressed),
-              CompleteTasksScreen(changeTaskCompleteness, onDeleteItemPressed),
-              InCompleteTasksScreen(changeTaskCompleteness, onDeleteItemPressed)
+              AllTasksScreen(changeTaskCompleteness, delete),
+              CompleteTasksScreen(changeTaskCompleteness, delete),
+              InCompleteTasksScreen(changeTaskCompleteness, delete)
             ],
           ),
         ));

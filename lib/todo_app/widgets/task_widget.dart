@@ -2,45 +2,33 @@ import 'package:flutter/material.dart';
 import 'package:todo_list/todo_app/data/tasks_data.dart';
 import 'package:todo_list/todo_app/models/task_model.dart';
 
-class TaskWidget extends StatefulWidget {
+class TaskWidget extends StatelessWidget {
   Function fun;
   Function delete;
   Task task;
-
   TaskWidget(this.task, this.fun, this.delete);
-
-  @override
-  State<TaskWidget> createState() => _TaskWidgetState();
-}
-
-class _TaskWidgetState extends State<TaskWidget> {
-  deleteTaskCompleteness(Task task) {
-    tasksList.removeWhere((element) => element.id == task.id);
-    setState(() {});
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  @override  Widget build(BuildContext context) {
     // TODO: implement build
     return Container(
         margin: const EdgeInsets.only(top: 20, left: 15, right: 15, bottom: 2),
         decoration: BoxDecoration(
-            color: widget.task.isCompleted
+            color: task.isCompleted
                 ? const Color(0xFF211551).withOpacity(0.7)
                 : const Color(0xFF86829D).withOpacity(0.7),
             borderRadius: BorderRadius.circular(15)),
         padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 8),
         child: CheckboxListTile(
-          title: Text(widget.task.title),
-          value: widget.task.isCompleted,
+          title: Text(task.title),
+          value: task.isCompleted,
           activeColor: const Color(0xFFD84B71).withOpacity(0.4),
           onChanged: (v) {
-            widget.fun(widget.task);
+            fun(task);
           },
           secondary: IconButton(
             icon: const Icon(Icons.delete),
             onPressed: () {
-              deleteTaskCompleteness;
+              fun(task);
+              delete(task);
             },
           ),
         ));

@@ -6,7 +6,7 @@ import 'package:todo_list/todo_app/pages/todo_home_page.dart';
 void main() {
   runApp(MaterialApp(
       theme: ThemeData.light(),
-      home: const TodoHomePage()));
+      home:  TodoHomePage()));
 }
 
 class LoginScreen extends StatefulWidget {
